@@ -15,6 +15,9 @@ class Employee(models.Model):
     address = models.TextField()
     job = models.ManyToManyField('AvailableJob',blank=True)
     dob = models.DateField()
+    basic_pay = models.DecimalField(max_digits=20,decimal_places=3)
+    net_salary = models.DecimalField(max_digits=20,decimal_places=3)
+    
 
 class AvailableJob(models.Model):
     job_name = models.CharField(max_length=50)

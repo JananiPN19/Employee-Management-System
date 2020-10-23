@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block title %} Welcome Admin. {% endblock title %}
+
+{% block content %}
+
+<h2> Welcome Admin! </h2>
+<br>
+<h2>Employee List</h2> 
+<!--
+    List of works done by admin:
+        1. Add an employee
+        2. Delete an Employee
+        3. Check Employees attendance status
+        4. Update Salary
+-->
+  <p>Type something in the input field to search the table for first names, last names or emails:</p>  
+  <input class="form-control" id="myInput" type="text" placeholder="Search..">
+  <br>
+  <div class="row">
+    <div class="col-lg-12">
+      <table id="myTable" class="table table-bordered">
+        <thead>
+          <th> First Name </th>
+          <th> Last Name </th>
+          <th> Details </th>
+        </thead>
+        {% for employee in employees %}
+          <tr>
+            <td> {{ employee.first_name }} </td>
+            <td> {{ employee.last_name }} </td>
+            <td> <a class="btn btn-primary btn-sm" href="{% url 'employee_detail' employee.email_id %}">Details</a> </td>
+            <td> <a class="fas fa-user-minus" href="{% url 'delete' employee.email_id %}"> </td>
+          </tr>
+        {% endfor %}
+      </table>
+    </div>
+  </div>
+  <a class="btn btn-primary btn-sm" href="{% url 'create_new' %}"> Add </a>
+
+
+  <script>
+$(document).ready(function(){
+  $("#myInput").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#myTable tr").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+});
+</script>
+
+{% endblock content %}

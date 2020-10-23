@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block title %} Welcome Employee. {% endblock title %}
+
+{% block content %}
+
+<h2> Welcome {{name}}! </h2>
+
+<!--
+    List of Works done by Employee:
+        1. Updating personal details
+        2. Updating leave status
+        3. Updating Attendance status
+        4. Viewing Salary Status
+-->
+    <div class="row">
+    <div class="col-lg-12">
+        <h3 class="text-center"> Employee Details </h3>
+        <hr>
+        <p> <b>Name:</b> {{employee.first_name}} {{employee.last_name}} </p>
+        <p> <b>Email address:</b> {{employee.email_id}} </p>
+        <p> <b>Contact:</b> {{employee.phone_num}} </p>
+        <p> <b>Gender:</b> {{employee.gender}} </p>
+        <p> <b>Address:</b> {{employee.address}} </p>
+        <p> <b>Job:</b>
+            {% for job in employee.job.all %}
+            <em> {{job.job_name}} </em>
+            {% endfor %}
+        </p>
+        <p> <b>Date of Birth:</b> {{employee.dob}} </p>
+        <p><b> Salary:</b> ${{employee.basic_pay}} </p>
+        <a class="btn btn-primary" href="{% url 'edit' employee.email_id %}">Update Details</a>
+
+        {% if success %}
+            {{success}}
+        {% else %}
+            {{error}}
+        {% endif %}
+        
+    </div>
+  </div>
+
+{% endblock content %}
