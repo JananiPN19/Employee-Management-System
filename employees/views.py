@@ -112,7 +112,7 @@ def employee(request,email):
     try:
         empl = Employee.objects.get(email_id=email)
         context={
-        'name':emp.first_name,
+        'name':empl.first_name,
         'employee':empl,
         }
         return render(request,'employee.html',context)
