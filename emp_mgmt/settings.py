@@ -25,7 +25,9 @@ SECRET_KEY = '!q)d@zd_xr2=bryg)6ah$!e-&2s()b*s9ah=f9welq94l-hv*9'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'murmuring-oasis-21000.herokuapp.com',
+    ]
 
 
 # Application definition
