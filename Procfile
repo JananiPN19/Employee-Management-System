@@ -1,1 +1,1 @@
-web: gunicorn emp_mgmt:app 
+web: gunicorn emp_mgmt.wsgi 
